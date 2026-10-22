@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Janem Empresarial | Plataforma Corporativa en Construcción</title>
+  <title>Janem Empresarial | Próximamente</title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -20,60 +20,39 @@
           colors: {
             janem: {
               navy: '#002B49',
-              navyDeep: '#001A2E',
               green: '#00E676',
               greenDark: '#00C853',
-              lightBg: '#F8FAFC',
+              slateBg: '#F1F5F9',
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
           }
         }
       }
     }
   </script>
-  
-  <style>
-    /* Gradient animated border */
-    @keyframes borderGlow {
-      0%, 100% { border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 20px rgba(0, 230, 118, 0.1); }
-      50% { border-color: rgba(0, 43, 73, 0.6); box-shadow: 0 0 25px rgba(0, 43, 73, 0.15); }
-    }
-    .glow-box {
-      animation: borderGlow 4s infinite ease-in-out;
-    }
-    /* Pulse dot */
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.5; }
-    }
-    .dot-pulse {
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-  </style>
 </head>
-<body class="bg-janem-lightBg text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-janem-green selection:text-janem-navy relative overflow-x-hidden">
+<body class="bg-janem-slateBg text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-janem-green selection:text-janem-navy relative overflow-x-hidden">
 
-  <!-- Background Decorative Grid -->
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,#002b4908_1px,transparent_1px),linear-gradient(to_bottom,#002b4908_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
+  <!-- Glow Background Accent -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-emerald-100/60 via-slate-100/40 to-transparent blur-3xl pointer-events-none"></div>
 
   <!-- HEADER / LOGO -->
   <header class="w-full py-8 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
       <!-- LOGO VECTORIAL EXACTO JANEM EMPRESARIAL -->
       <a href="#" class="inline-block hover:opacity-95 transition-opacity">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" class="h-12 md:h-16 w-auto" aria-label="Janem Empresarial">
           <defs>
-            <linearGradient id="arcGradientHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id="arcGradientHeader2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="#00E676" />
               <stop offset="50%" stop-color="#00C853" />
               <stop offset="100%" stop-color="#002B49" />
             </linearGradient>
           </defs>
           <!-- Arco Superior -->
-          <path d="M 12 52 A 44 44 0 0 1 100 52" fill="none" stroke="url(#arcGradientHeader)" stroke-width="15" stroke-linecap="round"/>
+          <path d="M 12 52 A 44 44 0 0 1 100 52" fill="none" stroke="url(#arcGradientHeader2)" stroke-width="15" stroke-linecap="round"/>
           <!-- Letra J -->
           <path d="M 56 34 L 56 76 C 56 88 46 96 34 96 C 22 96 14 88 14 76" fill="none" stroke="#002B49" stroke-width="15" stroke-linecap="round"/>
           <!-- Letras ANEM -->
@@ -83,94 +62,59 @@
         </svg>
       </a>
 
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
-        <span class="w-2.5 h-2.5 rounded-full bg-janem-green dot-pulse"></span>
-        <span class="text-xs font-bold uppercase tracking-wider text-janem-navy">Despliegue v2.4 Activo</span>
-      </div>
+      <!-- Quick Contact Button -->
+      <a href="https://wa.me/" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-slate-200 text-janem-navy font-bold text-xs shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
+        <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i>
+        <span>Atención a Clientes</span>
+      </a>
     </div>
   </header>
 
-  <!-- MAIN HERO CONTENT -->
-  <main class="w-full max-w-5xl mx-auto px-6 py-8 my-auto relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      
-      <!-- Left Column: Copy & Form -->
-      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-        
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide">
-          <i class="fa-solid fa-shield-halved text-janem-greenDark"></i>
-          Soluciones de Seguros Empresariales & Intranet Corporativa
+  <!-- MAIN CONTENT -->
+  <main class="w-full max-w-4xl mx-auto px-6 py-6 my-auto relative z-10 text-center">
+    
+    <!-- Central Pill -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-janem-navy text-white text-xs font-semibold tracking-wider uppercase mb-6 shadow-md">
+      <i class="fa-solid fa-lock text-janem-green text-xs"></i>
+      Portal Institucional en Actualización
+    </div>
+
+    <!-- Main Heading -->
+    <h1 class="text-4xl sm:text-6xl font-black text-janem-navy tracking-tight leading-tight mb-6">
+      Estamos construyendo la nueva experiencia en <span class="bg-clip-text text-transparent bg-gradient-to-r from-janem-navy via-janem-navy to-janem-greenDark">Seguros Corporativos</span>
+    </h1>
+
+    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+      Muy pronto podrás acceder a nuestro **Portal de Trámites e Intranet Corporativa** para la gestión ágil de Gastos Médicos Colectivos, Vida Grupo, Daños y Beneficios de Recursos Humanos.
+    </p>
+
+    <!-- Services Quick Grid (What is coming) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10 text-left">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3 text-lg">
+          <i class="fa-solid fa-notes-medical"></i>
         </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-janem-navy tracking-tight leading-none">
-          Evolucionamos la <br class="hidden sm:inline"/>
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-janem-navy via-janem-navy to-janem-greenDark">
-            Protección Corporativa.
-          </span>
-        </h1>
-
-        <p class="text-slate-600 text-base sm:text-lg max-w-xl font-normal leading-relaxed mx-auto lg:mx-0">
-          Estamos desplegando nuestra nueva plataforma digital para la autogestión de **Seguros Colectivos (GMM, Vida, Daños, Flotillas)** y el nuevo **Portal de Trámites para Recursos Humanos**.
-        </p>
-
-        <!-- Interactive Access Form -->
-        <div class="bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200 shadow-xl shadow-slate-200/50 glow-box max-w-md mx-auto lg:mx-0">
-          <form id="notifyForm" class="flex flex-col sm:flex-row gap-2" onsubmit="handleSubscribe(event)">
-            <input 
-              type="email" 
-              required
-              placeholder="tu.correo@empresa.com" 
-              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-janem-green focus:bg-white transition-all"
-            >
-            <button 
-              type="submit" 
-              class="px-6 py-3 rounded-xl bg-janem-navy hover:bg-slate-900 text-white font-bold text-sm whitespace-nowrap transition-all shadow-md flex items-center justify-center gap-2 group"
-            >
-              <span>Acceso Anticipado</span>
-              <i class="fa-solid fa-arrow-right text-xs text-janem-green group-hover:translate-x-1 transition-transform"></i>
-            </button>
-          </form>
-          <div id="formFeedback" class="hidden text-xs text-emerald-700 font-semibold mt-2 px-2 text-left">
-            <i class="fa-solid fa-circle-check mr-1"></i> ¡Solicitud recibida! Te notificaremos al habilitar tu acceso corporativo.
-          </div>
-        </div>
-
-        <!-- Contact Quick Actions -->
-        <div class="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-4 text-xs font-semibold text-slate-600">
-          <span class="text-slate-400">¿Requieres atención inmediata?</span>
-          <a href="https://wa.me/" target="_blank" class="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 transition-colors">
-            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Corporativo
-          </a>
-          <span class="text-slate-300">•</span>
-          <a href="mailto:contacto@janemempresarial.com.mx" class="inline-flex items-center gap-1.5 text-janem-navy hover:underline">
-            <i class="fa-regular fa-envelope text-sm"></i> Atender un Siniestro
-          </a>
-        </div>
-
+        <h3 class="font-bold text-janem-navy text-sm mb-1">GMM &amp; Vida Colectivo</h3>
+        <p class="text-xs text-slate-500">Gestión simplificada de pólizas y reembolsos digitales.</p>
       </div>
 
-      <!-- Right Column: Live Terminal Simulation -->
-      <div class="lg:col-span-5">
-        <div class="bg-janem-navyDeep text-slate-200 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden font-mono text-xs">
-          <!-- Terminal Header -->
-          <div class="bg-janem-navy px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-            </div>
-            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Janem Cloud Sync</span>
-          </div>
-          
-          <!-- Terminal Body -->
-          <div class="p-5 space-y-3 h-64 overflow-y-auto" id="terminalConsole">
-            <p class="text-emerald-400">&gt; Iniciando protocolo de despliegue Janem Empresarial...</p>
-            <p class="text-slate-400">&gt; Conectando con servidor DNS en Cloudflare Edge [OK]</p>
-            <p class="text-slate-400">&gt; Verificando certificados SSL/TLS de alta seguridad [OK]</p>
-            <p class="text-slate-300">&gt; Cargando módulos de Seguros Corporativos:</p>
-            <p class="text-slate-400 ml-4">├─ GMM Colectivo &amp; Reembolsos Digitales</p>
-            <p class="text-slate-400 ml-4">├─ Vida Grupo &amp; Accidentes Personales</p>
-            <p class="text-slate-400 ml-4">├─ Múltiple Empresarial &amp; Responsabilidad Civil</p>
-            <p class="text-slate-400 ml-4">└─ Portal de Trámites &amp; Altas/Bajas de RH</p>
-            <p class="text-emerald
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-janem-navy flex items-center justify-center mb-3 text-lg">
+          <i class="fa-solid fa-building-shield"></i>
+        </div>
+        <h3 class="font-bold text-janem-navy text-sm mb-1">Daños &amp; Flotillas</h3>
+        <p class="text-xs text-slate-500">Protección integral para activos y patrimonio empresarial.</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-3 text-lg">
+          <i class="fa-solid fa-users-gear"></i>
+        </div>
+        <h3 class="font-bold text-janem-navy text-sm mb-1">Portal de RH</h3>
+        <p class="text-xs text-slate-500">Autogestión de altas, bajas y certificados para empleados.</p>
+      </div>
+    </div>
+
+    <!-- Contact & Notification Box -->
+    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl max-w-xl mx-auto">
+      <h
