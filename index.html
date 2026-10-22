@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Janem Empresarial | Seguros Corporativos y Soluciones de Riesgo</title>
-  
+  <title>Janem Empresarial | Plataforma Corporativa en Construcción</title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Inter & Montserrat Fonts -->
+  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -23,1215 +20,157 @@
           colors: {
             janem: {
               navy: '#002B49',
-              darkNavy: '#001A2E',
-              blueHover: '#003F6B',
+              navyDeep: '#001A2E',
               green: '#00E676',
               greenDark: '#00C853',
-              lightGray: '#F8FAFC',
-              border: '#E2E8F0'
+              lightBg: '#F8FAFC',
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            brand: ['Montserrat', 'sans-serif']
+            mono: ['JetBrains Mono', 'monospace'],
           }
         }
       }
     }
   </script>
-
+  
   <style>
-    /* Custom SVG typography alignment and smooth styling */
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #FFFFFF;
-      color: #1E293B;
+    /* Gradient animated border */
+    @keyframes borderGlow {
+      0%, 100% { border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 20px rgba(0, 230, 118, 0.1); }
+      50% { border-color: rgba(0, 43, 73, 0.6); box-shadow: 0 0 25px rgba(0, 43, 73, 0.15); }
     }
-    .text-brand-gradient {
-      background: linear-gradient(135deg, #002B49 0%, #00C853 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .glow-box {
+      animation: borderGlow 4s infinite ease-in-out;
     }
-    .shadow-soft {
-      box-shadow: 0 10px 30px -5px rgba(0, 43, 73, 0.08);
+    /* Pulse dot */
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
     }
-    .shadow-hover {
-      transition: all 0.3s ease;
-    }
-    .shadow-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 35px -10px rgba(0, 43, 73, 0.15);
-    }
-    /* SVG Logo styling adjustments */
-    .logo-text-main {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      fill: #002B49;
-    }
-    .logo-text-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      fill: #00E676;
-      letter-spacing: 0.18em;
+    .dot-pulse {
+      animation: pulseDot 2s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="antialiased text-slate-800 bg-white">
+<body class="bg-janem-lightBg text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-janem-green selection:text-janem-navy relative overflow-x-hidden">
 
-  <!-- TOP BAR -->
-  <div class="bg-janem-navy text-white text-xs py-2 px-4 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-      <div class="flex items-center space-x-6">
-        <span class="flex items-center gap-2 text-slate-300">
-          <i class="fa-solid fa-phone text-janem-green">
-            <span class="sr-only">Teléfono</span>
-          </i> 800 526 3600 | 55 5280 4000
-        </span>
-        <span class="hidden md:flex items-center gap-2 text-slate-300">
-          <i class="fa-solid fa-envelope text-janem-green">
-            <span class="sr-only">Correo electrónico</span>
-          </i> hola@janemempresarial.com.mx
-        </span>
-      </div>
-      <div class="flex items-center space-x-4">
-        <span class="bg-janem-green/10 text-janem-green px-2.5 py-0.5 rounded-full text-[11px] font-semibold border border-janem-green/30">
-          <i class="fa-solid fa-shield-halved mr-1">
-            <span class="sr-only">Agente de Seguros</span>
-          </i> Agente de Seguros Regulado CNSF
-        </span>
-        <button onclick="openModal()" class="text-xs text-white hover:text-janem-green font-medium transition-colors flex items-center gap-1">
-          <i class="fa-solid fa-lock text-janem-green">
-            <span class="sr-only">Acceso Clientes</span>
-          </i> Acceso Clientes
-        </button>
-      </div>
-    </div>
-  </div>
+  <!-- Background Decorative Grid -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#002b4908_1px,transparent_1px),linear-gradient(to_bottom,#002b4908_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
 
-  <!-- NAVIGATION HEADER -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        
-        <!-- EXACT BRAND LOGO (VECTORIAL SVG) -->
-        <a href="#" class="flex items-center group" aria-label="Janem Empresarial - Inicio">
-          <svg class="h-12 w-auto" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <!-- Arc Linear Gradient (Green to Navy) -->
-              <linearGradient id="janemArcGrad" x1="10" y1="10" x2="110" y2="40" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#00E676" />
-                <stop offset="50%" stop-color="#00C853" />
-                <stop offset="100%" stop-color="#002B49" />
-              </linearGradient>
-            </defs>
-            
-            <!-- Arc over the 'J' -->
-            <path d="M 12,38 A 38,38 0 0,1 112,38" fill="none" stroke="url(#janemArcGrad)" stroke-width="15" stroke-linecap="round"/>
-            
-            <!-- Letter 'J' positioned precisely under and integrated with the arc -->
-            <path d="M 33,30 L 59,30 L 59,62 C 59,74 50,83 36,83 C 22,83 13,74 13,63 L 30,63 C 30,67 32,70 36,70 C 40,70 42,67 42,62 L 42,44 L 33,44 Z" fill="#002B49" />
-            
-            <!-- Heavy Letters 'ANEM' -->
-            <text x="75" y="80" class="logo-text-main" font-size="58" letter-spacing="-1">ANEM</text>
-            
-            <!-- 'EMPRESARIAL' subtext aligned right below 'EM' -->
-            <text x="188" y="93" class="logo-text-sub" font-size="12">EMPRESARIAL</text>
-          </svg>
-        </a>
+  <!-- HEADER / LOGO -->
+  <header class="w-full py-8 px-6 relative z-10">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <!-- LOGO VECTORIAL EXACTO JANEM EMPRESARIAL -->
+      <a href="#" class="inline-block hover:opacity-95 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" class="h-12 md:h-16 w-auto" aria-label="Janem Empresarial">
+          <defs>
+            <linearGradient id="arcGradientHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00E676" />
+              <stop offset="50%" stop-color="#00C853" />
+              <stop offset="100%" stop-color="#002B49" />
+            </linearGradient>
+          </defs>
+          <!-- Arco Superior -->
+          <path d="M 12 52 A 44 44 0 0 1 100 52" fill="none" stroke="url(#arcGradientHeader)" stroke-width="15" stroke-linecap="round"/>
+          <!-- Letra J -->
+          <path d="M 56 34 L 56 76 C 56 88 46 96 34 96 C 22 96 14 88 14 76" fill="none" stroke="#002B49" stroke-width="15" stroke-linecap="round"/>
+          <!-- Letras ANEM -->
+          <text x="104" y="94" font-family="'Inter', sans-serif" font-weight="900" font-size="70" fill="#002B49" letter-spacing="-1.5">ANEM</text>
+          <!-- Subtexto EMPRESARIAL -->
+          <text x="268" y="112" font-family="'Inter', sans-serif" font-weight="800" font-size="19" fill="#00E676" letter-spacing="1">EMPRESARIAL</text>
+        </svg>
+      </a>
 
-        <!-- DESKTOP NAV ITEMS -->
-        <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-700">
-          <a href="#soluciones" class="hover:text-janem-navy transition-colors">Soluciones de Seguro</a>
-          <a href="#tramites" class="hover:text-janem-navy transition-colors">Portal de Trámites</a>
-          <a href="#recursos-humanos" class="hover:text-janem-navy transition-colors">Servicios para RH</a>
-          <a href="#formatos" class="hover:text-janem-navy transition-colors">Centro de Descargas</a>
-          <a href="#contacto" class="hover:text-janem-navy transition-colors">Contacto</a>
-        </nav>
-
-        <!-- CTA BUTTONS -->
-        <div class="hidden lg:flex items-center space-x-4">
-          <a href="#cotizador" class="bg-janem-navy hover:bg-janem-blueHover text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-md hover:shadow-lg flex items-center gap-2">
-            <span>Cotizar Póliza</span>
-            <i class="fa-solid fa-arrow-right text-janem-green text-xs">
-              <span class="sr-only">Siguiente</span>
-            </i>
-          </a>
-          <button onclick="openModal()" class="border-2 border-janem-navy text-janem-navy hover:bg-janem-navy hover:text-white px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center gap-2">
-            <i class="fa-solid fa-user-shield text-janem-green">
-              <span class="sr-only">Intranet</span>
-            </i>
-            <span>Intranet</span>
-          </button>
-        </div>
-
-        <!-- MOBILE MENU BUTTON -->
-        <div class="lg:hidden flex items-center">
-          <button id="mobile-menu-button" class="text-slate-700 hover:text-janem-navy p-2 focus:outline-none" aria-label="Abrir menú de navegación">
-            <i class="fa-solid fa-bars text-2xl"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MOBILE MENU DRAWER -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
-      <a href="#soluciones" class="block py-2 text-base font-medium text-slate-700 hover:text-janem-navy border-b border-slate-100">Soluciones de Seguro</a>
-      <a href="#tramites" class="block py-2 text-base font-medium text-slate-700 hover:text-janem-navy border-b border-slate-100">Portal de Trámites</a>
-      <a href="#recursos-humanos" class="block py-2 text-base font-medium text-slate-700 hover:text-janem-navy border-b border-slate-100">Servicios para RH</a>
-      <a href="#formatos" class="block py-2 text-base font-medium text-slate-700 hover:text-janem-navy border-b border-slate-100">Centro de Descargas</a>
-      <a href="#contacto" class="block py-2 text-base font-medium text-slate-700 hover:text-janem-navy">Contacto</a>
-      <div class="pt-4 flex flex-col space-y-2">
-        <a href="#cotizador" class="w-full text-center bg-janem-navy text-white py-3 rounded-lg font-semibold text-sm">Cotizar Póliza</a>
-        <button onclick="openModal()" class="w-full text-center border-2 border-janem-navy text-janem-navy py-2.5 rounded-lg font-semibold text-sm">Acceso Intranet</button>
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-janem-green dot-pulse"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-janem-navy">Despliegue v2.4 Activo</span>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative bg-gradient-to-b from-slate-50 via-white to-slate-50 pt-12 pb-20 overflow-hidden">
-    <!-- Decorative background elements -->
-    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-janem-green/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-janem-navy/5 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left Column: Copywriting -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 bg-janem-navy/5 border border-janem-navy/10 px-3.5 py-1.5 rounded-full text-janem-navy text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-janem-green animate-pulse"></span>
-            Broker Especializado en Riesgos Corporativos
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-janem-navy tracking-tight leading-tight">
-            Protección Integral para tu <span class="text-brand-gradient">Empresa y Colaboradores</span>
-          </h1>
-
-          <p class="text-lg text-slate-600 font-normal leading-relaxed max-w-2xl">
-            Diseñamos, administramos y optimizamos programas masivos de <strong>Gastos Médicos Colectivos, Vida Grupo, Daños y Fianzas Corporativas</strong>. Potenciamos el departamento de Recursos Humanos con gestión digital eficiente.
-          </p>
-
-          <div class="pt-2 flex flex-col sm:flex-row gap-4">
-            <a href="#cotizador" class="bg-janem-navy hover:bg-janem-blueHover text-white px-8 py-4 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl text-center flex items-center justify-center gap-3">
-              <span>Solicitar Diagnóstico de Riesgo</span>
-              <i class="fa-solid fa-arrow-right text-janem-green">
-                <span class="sr-only">Diagnóstico de Riesgo</span>
-              </i>
-            </a>
-            <a href="#tramites" class="border-2 border-slate-300 hover:border-janem-navy text-slate-700 hover:text-janem-navy px-6 py-4 rounded-xl font-semibold text-base transition-all text-center flex items-center justify-center gap-2 bg-white">
-              <i class="fa-solid fa-laptop-medical text-janem-navy">
-                <span class="sr-only">Portal de Trámites</span>
-              </i>
-              <span>Portal de Trámites</span>
-            </a>
-          </div>
-
-          <!-- Key Metrics / Trust -->
-          <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-200/80">
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-janem-navy">+150,000</p>
-              <p class="text-xs text-slate-500 font-medium">Asegurados Activos</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-janem-navy">99.2%</p>
-              <p class="text-xs text-slate-500 font-medium">Resolución de Siniestros</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-janem-navy">24 / 7</p>
-              <p class="text-xs text-slate-500 font-medium">Mesa de Ayuda Médica</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Interactive Quick Portal Card -->
-        <div class="lg:col-span-5">
-          <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
-            <div class="absolute -top-3 right-6 bg-janem-green text-janem-darkNavy text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
-              Atención Directa
-            </div>
-
-            <h3 class="text-xl font-bold text-janem-navy mb-1">Mesa de Trámites Rápidos</h3>
-            <p class="text-xs text-slate-500 mb-6">Seleccione el servicio que desea gestionar hoy:</p>
-
-            <div class="space-y-3">
-              <a href="#tramites" onclick="switchTab('reembolsos')" class="group p-3.5 rounded-xl border border-slate-200 hover:border-janem-green hover:bg-slate-50 transition-all flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-janem-navy/10 text-janem-navy flex items-center justify-center group-hover:bg-janem-navy group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-file-invoice-dollar text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-bold text-slate-800">Solicitud de Reembolso Médico</h4>
-                    <p class="text-xs text-slate-500">Subir facturas e informes de gastos</p>
-                  </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-janem-green transition-colors">
-                  <span class="sr-only">Ir a Solicitud de Reembolso Médico</span>
-                </i>
-              </a>
-
-              <a href="#tramites" onclick="switchTab('programacion')" class="group p-3.5 rounded-xl border border-slate-200 hover:border-janem-green hover:bg-slate-50 transition-all flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-janem-green/20 text-janem-darkNavy flex items-center justify-center group-hover:bg-janem-green transition-colors">
-                    <i class="fa-solid fa-hospital-user text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-bold text-slate-800">Programación de Cirugía / Procedimiento</h4>
-                    <p class="text-xs text-slate-500">Pases hospitalarios y cartas pase</p>
-                  </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-janem-green transition-colors">
-                  <span class="sr-only">Ir a Programación de Cirugía</span>
-                </i>
-              </a>
-
-              <a href="#tramites" onclick="switchTab('rh-movimientos')" class="group p-3.5 rounded-xl border border-slate-200 hover:border-janem-green hover:bg-slate-50 transition-all flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:bg-janem-navy group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-users-gear text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-bold text-slate-800">Altas y Bajas de Empleados (RH)</h4>
-                    <p class="text-xs text-slate-500">Movimientos de nómina y asegurados</p>
-                  </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-janem-green transition-colors">
-                  <span class="sr-only">Ir a Altas y Bajas de Empleados</span>
-                </i>
-              </a>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-              <span class="flex items-center gap-1.5">
-                <i class="fa-solid fa-headset text-janem-green">
-                  <span class="sr-only">Soporte telefónico</span>
-                </i> Soporte telefónico en siniestros
-              </span>
-              <a href="https://wa.me/525552804000" target="_blank" class="text-janem-navy font-bold hover:underline flex items-center gap-1">
-                <i class="fa-brands fa-whatsapp text-green-550">
-                  <span class="sr-only">WhatsApp</span>
-                </i> WhatsApp 24/7
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUCIONES DE SEGUROS EMPRESARIALES GRID -->
-  <section id="soluciones" class="py-20 bg-slate-50 border-y border-slate-200/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- MAIN HERO CONTENT -->
+  <main class="w-full max-w-5xl mx-auto px-6 py-8 my-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-widest text-janem-green bg-janem-navy px-3 py-1 rounded-full">Portafolio Corporativo</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-janem-navy mt-3">Soluciones Integrales de Seguro para Empresas</h2>
-        <p class="text-slate-600 mt-3 text-base">Diseñadas a la medida para proteger el patrimonio financiero, activos físicos y el capital humano de su organización.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Left Column: Copy & Form -->
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
         
-        <!-- Card 1: GMM Colectivo -->
-        <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-soft shadow-hover flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-janem-greenDark text-2xl mb-6">
-              <i class="fa-solid fa-heart-pulse"></i>
-            </div>
-            <h3 class="text-xl font-bold text-janem-navy mb-3">Gastos Médicos Mayores Colectivo (GMM)</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Planes de salud corporativos flexibles con acceso a las mejores redes hospitalarias del país, coberturas internacionales, tabuladores optimizados y administración deducible para la empresa.
-            </p>
-            <ul class="space-y-2 text-xs font-medium text-slate-700 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Redes hospitalarias personalizadas</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Eliminación / reducción de antigüedad</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Cobertura de maternidad y recién nacido</li>
-            </ul>
-          </div>
-          <button onclick="selectProduct('Gastos Médicos Mayores Colectivo')" class="w-full py-2.5 rounded-lg border border-janem-navy text-janem-navy font-bold text-xs hover:bg-janem-navy hover:text-white transition-colors">
-            Cotizar GMM Colectivo
-          </button>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide">
+          <i class="fa-solid fa-shield-halved text-janem-greenDark"></i>
+          Soluciones de Seguros Empresariales & Intranet Corporativa
         </div>
 
-        <!-- Card 2: Vida Grupo -->
-        <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-soft shadow-hover flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-janem-navy text-2xl mb-6">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <h3 class="text-xl font-bold text-janem-navy mb-3">Vida Grupo y Accidentes Personales</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Protección financiera sustancial para las familias de sus colaboradores en caso de fallecimiento, invalidez total o permanente y pérdidas orgánicas. Beneficio clave de retención de talento.
-            </p>
-            <ul class="space-y-2 text-xs font-medium text-slate-700 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Sumas aseguradas por múltiplos de sueldo</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Cobertura de Invalidez Total y Permanente (BITP)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Gastos funerarios incluidos</li>
-            </ul>
-          </div>
-          <button onclick="selectProduct('Vida Grupo y Accidentes')" class="w-full py-2.5 rounded-lg border border-janem-navy text-janem-navy font-bold text-xs hover:bg-janem-navy hover:text-white transition-colors">
-            Cotizar Vida Grupo
-          </button>
-        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-janem-navy tracking-tight leading-none">
+          Evolucionamos la <br class="hidden sm:inline"/>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-janem-navy via-janem-navy to-janem-greenDark">
+            Protección Corporativa.
+          </span>
+        </h1>
 
-        <!-- Card 3: Múltiple Empresarial / Daños -->
-        <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-soft shadow-hover flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-slate-800 text-2xl mb-6">
-              <i class="fa-solid fa-building-shield"></i>
-            </div>
-            <h3 class="text-xl font-bold text-janem-navy mb-3">Seguro Múltiple Empresarial (Daños)</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Blindaje completo de activos, edificios, maquinaria, inventarios y mercancías contra incendio, terremoto, inundación, robo y pérdidas consecuenciales por interrupción de negocio.
-            </p>
-            <ul class="space-y-2 text-xs font-medium text-slate-700 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Edificios y Contenidos a valor de reposición</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Pérdidas consecuenciales y gastos fijos</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Equipo electrónico y maquinaria pesada</li>
-            </ul>
-          </div>
-          <button onclick="selectProduct('Múltiple Empresarial (Daños)')" class="w-full py-2.5 rounded-lg border border-janem-navy text-janem-navy font-bold text-xs hover:bg-janem-navy hover:text-white transition-colors">
-            Cotizar Seguro de Daños
-          </button>
-        </div>
+        <p class="text-slate-600 text-base sm:text-lg max-w-xl font-normal leading-relaxed mx-auto lg:mx-0">
+          Estamos desplegando nuestra nueva plataforma digital para la autogestión de **Seguros Colectivos (GMM, Vida, Daños, Flotillas)** y el nuevo **Portal de Trámites para Recursos Humanos**.
+        </p>
 
-        <!-- Card 4: Flotillas & Equipo Pesado -->
-        <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-soft shadow-hover flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-teal-700 text-2xl mb-6">
-              <i class="fa-solid fa-truck-monster"></i>
-            </div>
-            <h3 class="text-xl font-bold text-janem-navy mb-3">Flotillas y Vehículos Corporativos</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Administración unificada y tarifas preferenciales para flotillas de autos utilitarios, ejecutivos, camiones de carga y transporte pesado. Asistencia vial y legal 24/7.
-            </p>
-            <ul class="space-y-2 text-xs font-medium text-slate-700 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Cobro por experiencia global de siniestralidad</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Deducibles preferenciales y autos sustitutos</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Telemetría y rastreo satelital integrado</li>
-            </ul>
-          </div>
-          <button onclick="selectProduct('Flotillas Corporativas')" class="w-full py-2.5 rounded-lg border border-janem-navy text-janem-navy font-bold text-xs hover:bg-janem-navy hover:text-white transition-colors">
-            Cotizar Flotilla
-          </button>
-        </div>
-
-        <!-- Card 5: Responsabilidad Civil y D&O -->
-        <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-soft shadow-hover flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-800 text-2xl mb-6">
-              <i class="fa-solid fa-user-tie"></i>
-            </div>
-            <h3 class="text-xl font-bold text-janem-navy mb-3">Responsabilidad Civil & D&O</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Protección para Directores, Administradores y Consejeros (D&O) ante reclamaciones de terceros o accionistas por decisiones directivas, así como RC General e Industrial.
-            </p>
-            <ul class="space-y-2 text-xs font-medium text-slate-700 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Defensa legal y gastos de litigio</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> RC Productos y Operaciones completadas</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Cobertura para riesgos ciberatacos / Cyber Risk</li>
-            </ul>
-          </div>
-          <button onclick="selectProduct('RC y D&O')" class="w-full py-2.5 rounded-lg border border-janem-navy text-janem-navy font-bold text-xs hover:bg-janem-navy hover:text-white transition-colors">
-            Cotizar D&O y RC
-          </button>
-        </div>
-
-        <!-- Card 6: Fianzas y Garantías -->
-        <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-soft shadow-hover flex flex-col justify-between">
-          <div>
-            <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-700 text-2xl mb-6">
-              <i class="fa-solid fa-certificate"></i>
-            </div>
-            <h3 class="text-xl font-bold text-janem-navy mb-3">Fianzas y Garantías Corporativas</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Emisión ágil de fianzas administrativas, de fidelidad, judiciales y de cumplimiento de contratos para licitaciones públicas y proyectos privados de gran escala.
-            </p>
-            <ul class="space-y-2 text-xs font-medium text-slate-700 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Licitación, anticipo y buena calidad</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Líneas de afianzamiento pre-autorizadas</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-janem-green"></i> Asesoría legal en garantías e inmuebles</li>
-            </ul>
-          </div>
-          <button onclick="selectProduct('Fianzas y Garantías')" class="w-full py-2.5 rounded-lg border border-janem-navy text-janem-navy font-bold text-xs hover:bg-janem-navy hover:text-white transition-colors">
-            Gestionar Fianzas
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTAL INTERACTIVO DE TRÁMITES E INTRANET -->
-  <section id="tramites" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-janem-navy bg-janem-green px-3 py-1 rounded-full">Gestión Autónoma</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-janem-navy mt-3">Portal Digital de Trámites & Siniestros</h2>
-        <p class="text-slate-600 mt-2 text-sm">Realice sus solicitudes en línea de forma rápida, segura y con seguimiento en tiempo real.</p>
-      </div>
-
-      <!-- TAB BUTTONS -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8 border-b border-slate-200 pb-4">
-        <button id="tab-reembolsos-btn" onclick="switchTab('reembolsos')" class="tab-btn active bg-janem-navy text-white px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-sm">
-          <i class="fa-solid fa-receipt"></i> Reembolsos Médicos
-        </button>
-        <button id="tab-programacion-btn" onclick="switchTab('programacion')" class="tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2">
-          <i class="fa-solid fa-hospital-user"></i> Programación Quirúrgica
-        </button>
-        <button id="tab-rh-movimientos-btn" onclick="switchTab('rh-movimientos')" class="tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2">
-          <i class="fa-solid fa-users-gear"></i> Movimientos RH (Altas/Bajas)
-        </button>
-        <button id="tab-medicos-btn" onclick="switchTab('medicos')" class="tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2">
-          <i class="fa-solid fa-user-doctor"></i> Red Médica en Convenio
-        </button>
-      </div>
-
-      <!-- TAB CONTENT CONTAINER -->
-      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm">
-        
-        <!-- CONTENT 1: REEMBOLSOS -->
-        <div id="tab-reembolsos" class="tab-content space-y-6">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-6 space-y-4">
-              <h3 class="text-2xl font-bold text-janem-navy">Ingreso de Solicitud de Reembolso</h3>
-              <p class="text-slate-600 text-sm">
-                Cargue los comprobantes fiscales (XML y PDF) e informes médicos para solicitar el reembolso de gastos médicos cubiertos.
-              </p>
-              
-              <form id="form-reembolso" onsubmit="handleFormSubmit(event, 'Reembolso')" class="space-y-4 pt-2">
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Número de Póliza o Certificado</label>
-                  <input type="text" required placeholder="Ej. GMM-884920-JAN" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Nombre Completo del Titular / Asegurado</label>
-                  <input type="text" required placeholder="Nombre completo" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Monto Estimado ($MXN)</label>
-                    <input type="number" required placeholder="$0.00" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Correo Notificaciones</label>
-                    <input type="email" required placeholder="correo@empresa.com" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                </div>
-                <div class="border-2 border-dashed border-slate-300 rounded-xl p-4 text-center bg-white cursor-pointer hover:border-janem-green transition-colors">
-                  <i class="fa-solid fa-cloud-arrow-up text-2xl text-janem-navy mb-1"></i>
-                  <p class="text-xs font-bold text-slate-700">Arrastre aquí sus facturas (XML/PDF) e Informe Médico</p>
-                  <p class="text-[10px] text-slate-400">Máximo 25MB por archivo</p>
-                </div>
-                <button type="submit" class="w-full bg-janem-navy text-white font-bold py-3 rounded-lg text-sm hover:bg-janem-blueHover transition-colors">
-                  Enviar Reembolso a Revisión
-                </button>
-              </form>
-            </div>
-
-            <div class="lg:col-span-6 bg-white p-6 rounded-xl border border-slate-200">
-              <h4 class="font-bold text-janem-navy text-sm mb-4 border-b pb-2 flex items-center justify-between">
-                <span>Requisitos Indispensables para Reembolso</span>
-                <span class="text-xs font-semibold text-janem-green bg-janem-navy px-2 py-0.5 rounded">Lista de Cotejo</span>
-              </h4>
-              <ul class="space-y-3 text-xs text-slate-600">
-                <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-[#00C853] fa-circle-check text-janem-greenDark mt-0.5 text-sm"></i>
-                  <span><strong>Informe Médico:</strong> Llenado y firmado por el médico tratante (vigencia no mayor a 90 días).</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-circle-check text-janem-greenDark mt-0.5 text-sm"></i>
-                  <span><strong>Comprobantes Fiscales:</strong> Facturas CFDI (.xml y .pdf) a nombre del titular de la póliza.</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-circle-check text-janem-greenDark mt-0.5 text-sm"></i>
-                  <span><strong>Recetas Médicas & Estudios:</strong> Indicaciones de medicamentos y resultados de laboratorio/gabinete respaldatorios.</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-circle-check text-janem-greenDark mt-0.5 text-sm"></i>
-                  <span><strong>Estado de Cuenta Bancario:</strong> Carátula con CLABE interbancaria visible para transferencia del reembolso.</span>
-                </li>
-              </ul>
-              
-              <div class="mt-6 bg-amber-50 border border-amber-200 p-3.5 rounded-lg text-xs text-amber-800 flex items-start gap-3">
-                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg mt-0.5"></i>
-                <p><strong>Tiempo promedio de respuesta:</strong> De 5 a 7 días hábiles una vez entregada la documentación completa.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTENT 2: PROGRAMACIÓN QUIRÚRGICA -->
-        <div id="tab-programacion" class="tab-content hidden space-y-6">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 space-y-4">
-              <h3 class="text-2xl font-bold text-janem-navy">Programación de Cirugía o Carta Pase Hospitalaria</h3>
-              <p class="text-slate-600 text-sm">
-                Gestione con anticipación intervenciones quirúrgicas programadas, tratamiento de quimioterapia, radioterapia o procedimientos de corta estancia.
-              </p>
-              
-              <form id="form-programacion" onsubmit="handleFormSubmit(event, 'Programación Quirúrgica')" class="space-y-4 pt-2">
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Póliza / Certificado</label>
-                    <input type="text" required placeholder="Número de póliza" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Hospital Sugerido</label>
-                    <input type="text" required placeholder="Ej. Hospital Ángeles, ABC..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Procedimiento o Diagnóstico Quirúrgico</label>
-                  <input type="text" required placeholder="Ej. Colecistectomía Laparoscópica" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Fecha Programada</label>
-                    <input type="date" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Médico Tratante</label>
-                    <input type="text" placeholder="Dr. Nombre Apellido" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                </div>
-                <button type="submit" class="w-full bg-janem-green text-janem-darkNavy font-extrabold py-3 rounded-lg text-sm hover:bg-janem-greenDark transition-colors shadow-md">
-                  Generar Solicitud de Carta Pase
-                </button>
-              </form>
-            </div>
-
-            <div class="lg:col-span-5 bg-janem-navy text-white p-6 rounded-xl flex flex-col justify-between">
-              <div>
-                <span class="text-xs text-janem-green font-bold uppercase tracking-widest">Urgencias Hospitalarias</span>
-                <h4 class="text-xl font-bold mt-2 mb-4">¿Siniestro o Ingreso Hospitalario de Urgencia?</h4>
-                <p class="text-xs text-slate-300 leading-relaxed mb-6">
-                  En caso de un ingreso hospitalario no programado o urgencia médica, nuestro equipo de asesores en módulo hospitalario está disponible las 24 horas para coordinar el pago directo con la aseguradora.
-                </p>
-              </div>
-              <div class="bg-white/10 p-4 rounded-lg border border-white/10 space-y-2">
-                <p class="text-xs font-semibold text-janem-green"><i class="fa-solid fa-phone-volume mr-2"></i>Línea Exclusiva de Siniestros:</p>
-                <p class="text-lg font-black text-white">800 526 3600 (Opción 1)</p>
-                <p class="text-[11px] text-slate-400">Tenga a la mano su número de certificado y credencial digital.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTENT 3: MOVIMIENTOS RH -->
-        <div id="tab-rh-movimientos" class="tab-content hidden space-y-6">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 space-y-4">
-              <div class="flex items-center justify-between">
-                <h3 class="text-2xl font-bold text-janem-navy">Gestión de Movimientos de Nómina para RH</h3>
-                <span class="text-xs bg-janem-navy/10 text-janem-navy font-bold px-2.5 py-1 rounded">Módulo RH</span>
-              </div>
-              <p class="text-slate-600 text-sm">
-                Notifique altas, bajas y modificaciones de asegurados titulares o dependientes económicos de su póliza colectiva.
-              </p>
-
-              <form id="form-rh" onsubmit="handleFormSubmit(event, 'Movimiento de Nómina RH')" class="space-y-4 pt-2">
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Empresa / Razon Social</label>
-                    <input type="text" required placeholder="Nombre de la empresa" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Tipo de Movimiento</label>
-                    <select class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                      <option>Alta de Empleado (Nuevo Ingreso)</option>
-                      <option>Baja de Empleado (Inclusión en Finiquito)</option>
-                      <option>Alta de Dependiente (Cónyuge / Hijo)</option>
-                      <option>Corrección de Datos / RFC</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Nombre Completo del Colaborador</label>
-                    <input type="text" required placeholder="Nombre y Apellidos" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Fecha Efectiva del Movimiento</label>
-                    <input type="date" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Cargar Plantilla Masiva o Constancia de Ingesta (Excel/CSV)</label>
-                  <input type="file" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-janem-navy file:text-white hover:file:bg-janem-blueHover">
-                </div>
-                <button type="submit" class="w-full bg-janem-navy text-white font-bold py-3 rounded-lg text-sm hover:bg-janem-blueHover transition-colors">
-                  Procesar Endoso en Póliza
-                </button>
-              </form>
-            </div>
-
-            <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
-              <div>
-                <h4 class="font-bold text-janem-navy text-sm mb-3">Accesos Directos para Administradores de RH</h4>
-                <div class="space-y-2">
-                  <a href="#formatos" class="p-3 bg-slate-50 rounded-lg border border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-700 hover:bg-janem-navy/5 transition-colors">
-                    <span><i class="fa-solid fa-file-excel text-green-600 mr-2"></i> Descargar Plantilla Oficial de Altas/Bajas</span>
-                    <i class="fa-solid fa-download"></i>
-                  </a>
-                  <a href="#contacto" class="p-3 bg-slate-50 rounded-lg border border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-700 hover:bg-janem-navy/5 transition-colors">
-                    <span><i class="fa-solid fa-file-pdf text-red-600 mr-2"></i> Guía de Tiempos de Respuesta Endosos</span>
-                    <i class="fa-solid fa-download"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <div class="mt-6 p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-xs text-slate-700">
-                <p class="font-bold text-janem-navy mb-1"><i class="fa-solid fa-shield-check text-janem-greenDark mr-1"></i> Vigencia de Cobertura para Altas</p>
-                <p>Las altas notificadas dentro de los primeros 30 días naturales a la fecha de ingreso contarán con retroactividad sin penalización.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTENT 4: RED MÉDICA -->
-        <div id="tab-medicos" class="tab-content hidden space-y-6">
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-200 pb-4">
-            <div>
-              <h3 class="text-2xl font-bold text-janem-navy">Buscador de Médicos y Hospitales en Convenio</h3>
-              <p class="text-slate-600 text-xs mt-1">Consulte la red médica autorizada según el nivel hospitalario de su póliza colectiva.</p>
-            </div>
-            <div class="flex gap-2 w-full md:w-auto">
-              <input type="text" id="search-doctor" onkeyup="filterDoctors()" placeholder="Buscar por especialidad, doctor u hospital..." class="px-4 py-2 border border-slate-300 rounded-lg text-xs w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-janem-navy">
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="doctors-grid">
-            <!-- Doctor Item 1 -->
-            <div class="doctor-card bg-white p-4 rounded-xl border border-slate-200 space-y-2">
-              <span class="text-[10px] bg-blue-100 text-janem-navy font-bold px-2 py-0.5 rounded">Nivel Red Amplia / Triple A</span>
-              <h4 class="font-bold text-janem-navy text-sm doctor-name">Hospital Ángeles Metropolitano</h4>
-              <p class="text-xs text-slate-500 doctor-spec"><i class="fa-solid fa-hospital text-slate-400 mr-1"></i> Hospital de Alta Especialidad</p>
-              <p class="text-xs text-slate-600"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> Roma Sur, Ciudad de México</p>
-              <div class="pt-2 flex justify-between items-center text-xs border-t">
-                <span class="text-green-600 font-bold"><i class="fa-solid fa-circle-check"></i> Pago Directo</span>
-                <span class="text-slate-500">Tel: 55 5265 1800</span>
-              </div>
-            </div>
-
-            <!-- Doctor Item 2 -->
-            <div class="doctor-card bg-white p-4 rounded-xl border border-slate-200 space-y-2">
-              <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Pediatría & Cirugía Infantil</span>
-              <h4 class="font-bold text-janem-navy text-sm doctor-name">Dr. Roberto Garza Morales</h4>
-              <p class="text-xs text-slate-500 doctor-spec"><i class="fa-solid fa-user-doctor text-slate-400 mr-1"></i> Especialista Certificado por Consejo</p>
-              <p class="text-xs text-slate-600"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> Consultorios Centro Médico ABC Santa Fe</p>
-              <div class="pt-2 flex justify-between items-center text-xs border-t">
-                <span class="text-green-600 font-bold"><i class="fa-solid fa-circle-check"></i> Tabulador Directo</span>
-                <span class="text-slate-500">Tel: 55 1107 0000</span>
-              </div>
-            </div>
-
-            <!-- Doctor Item 3 -->
-            <div class="doctor-card bg-white p-4 rounded-xl border border-slate-200 space-y-2">
-              <span class="text-[10px] bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded">Ortopedia y Traumatología</span>
-              <h4 class="font-bold text-janem-navy text-sm doctor-name">Dra. Claudia Mendoza Ríos</h4>
-              <p class="text-xs text-slate-500 doctor-spec"><i class="fa-solid fa-user-doctor text-slate-400 mr-1"></i> Cirugía de Rodilla y Hombro</p>
-              <p class="text-xs text-slate-600"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> Hospital San José / Monterrey, N.L.</p>
-              <div class="pt-2 flex justify-between items-center text-xs border-t">
-                <span class="text-green-600 font-bold"><i class="fa-solid fa-circle-check"></i> Pago Directo</span>
-                <span class="text-slate-500">Tel: 81 8347 1010</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CENTRO DE DESCARGAS Y FORMATOTECA -->
-  <section id="formatos" class="py-16 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-janem-green bg-janem-navy px-3 py-1 rounded-full">Documentación Oficial</span>
-          <h2 class="text-3xl font-extrabold text-janem-navy mt-3">Centro de Descarga de Formatos</h2>
-          <p class="text-slate-600 text-sm mt-1">Descargue los formularios estandarizados requeridos por las aseguradoras para tramitar sus siniestros.</p>
-        </div>
-        <div class="mt-4 md:mt-0">
-          <span class="text-xs text-slate-500 font-medium">Formatos actualizados conforme a la CNSF</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Document 1 -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold text-lg">
-                <i class="fa-solid fa-file-pdf"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase">Gastos Médicos</span>
-                <h4 class="text-sm font-bold text-janem-navy">Informe Médico</h4>
-              </div>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Formato para llenado por el médico tratante con el diagnóstico detallado.</p>
-          </div>
-          <button onclick="downloadFile('Informe_Medico_Janem.pdf')" class="w-full py-2 bg-slate-100 hover:bg-janem-navy hover:text-white rounded-lg text-xs font-bold text-slate-700 transition-colors flex items-center justify-center gap-2">
-            <i class="fa-solid fa-download"></i> Descargar PDF
-          </button>
-        </div>
-
-        <!-- Document 2 -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold text-lg">
-                <i class="fa-solid fa-file-pdf"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase">Gastos Médicos</span>
-                <h4 class="text-sm font-bold text-janem-navy">Aviso de Accidentes</h4>
-              </div>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Declaración del asegurado titular especificando la naturaleza del siniestro.</p>
-          </div>
-          <button onclick="downloadFile('Aviso_Accidente_Reclamacion.pdf')" class="w-full py-2 bg-slate-100 hover:bg-janem-navy hover:text-white rounded-lg text-xs font-bold text-slate-700 transition-colors flex items-center justify-center gap-2">
-            <i class="fa-solid fa-download"></i> Descargar PDF
-          </button>
-        </div>
-
-        <!-- Document 3 -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
-                <i class="fa-solid fa-file-excel"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase">Recursos Humanos</span>
-                <h4 class="text-sm font-bold text-janem-navy">Censo de Movimientos RH</h4>
-              </div>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Plantilla Excel estructurada para envío masivo de altas y bajas de personal.</p>
-          </div>
-          <button onclick="downloadFile('Plantilla_Movimientos_RH_Janem.xlsx')" class="w-full py-2 bg-slate-100 hover:bg-janem-navy hover:text-white rounded-lg text-xs font-bold text-slate-700 transition-colors flex items-center justify-center gap-2">
-            <i class="fa-solid fa-download"></i> Descargar Excel
-          </button>
-        </div>
-
-        <!-- Document 4 -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 hover:shadow-md transition-shadow flex flex-col justify-between">
-          <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold text-lg">
-                <i class="fa-solid fa-file-pdf"></i>
-              </div>
-              <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase">Vida Colectivo</span>
-                <h4 class="text-sm font-bold text-janem-navy">Designación Beneficiarios</h4>
-              </div>
-            </div>
-            <p class="text-xs text-slate-500 mb-4">Formato legal para la designación y porcentaje de beneficiarios de seguro de vida.</p>
-          </div>
-          <button onclick="downloadFile('Designacion_Beneficiarios_Vida.pdf')" class="w-full py-2 bg-slate-100 hover:bg-janem-navy hover:text-white rounded-lg text-xs font-bold text-slate-700 transition-colors flex items-center justify-center gap-2">
-            <i class="fa-solid fa-download"></i> Descargar PDF
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FORMULARIO DE COTIZACIÓN EMPRESARIAL -->
-  <section id="cotizador" class="py-20 bg-janem-navy text-white relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="lg:col-span-5 space-y-6">
-          <span class="text-xs font-bold uppercase tracking-widest text-janem-green bg-white/10 px-3 py-1 rounded-full border border-white/20">Atención a Empresas</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            Solicite un Diagnóstico de Seguros para su Empresa
-          </h2>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Nuestros consultores senior en gestión de riesgos evaluarán las coberturas actuales de su organización para presentar una propuesta comparativa optimizada en costos y alcance.
-          </p>
-
-          <div class="space-y-4 pt-2">
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-janem-green text-janem-darkNavy font-bold flex items-center justify-center text-sm shrink-0">1</div>
-              <div>
-                <h4 class="font-bold text-sm text-white">Análisis de Siniestralidad Histórica</h4>
-                <p class="text-xs text-slate-300">Revisión detallada de la curva de siniestralidad de sus pólizas colectivas previas.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-janem-green text-janem-darkNavy font-bold flex items-center justify-center text-sm shrink-0">2</div>
-              <div>
-                <h4 class="font-bold text-sm text-white">Licitación con las Top 10 Aseguradoras</h4>
-                <p class="text-xs text-slate-300">Negociación de tarifas volumen con GNP, AXA, MetLife, Bupa, Banorte y Monterrey.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-janem-green text-janem-darkNavy font-bold flex items-center justify-center text-sm shrink-0">3</div>
-              <div>
-                <h4 class="font-bold text-sm text-white">Ejecutivo de Cuenta Asignado</h4>
-                <p class="text-xs text-slate-300">Atención personalizada y mesa de soporte para trámites de sus empleados.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 bg-white text-slate-800 rounded-2xl p-8 shadow-2xl">
-          <h3 class="text-xl font-bold text-janem-navy mb-1">Formulario de Cotización Corporativa</h3>
-          <p class="text-xs text-slate-500 mb-6">Complete la información general para recibir su propuesta de seguro empresarial.</p>
-
-          <form id="form-cotizador" onsubmit="handleFormSubmit(event, 'Solicitud de Cotización')" class="space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Razón Social de la Empresa</label>
-                <input type="text" id="cot-empresa" required placeholder="Empresa S.A. de C.V." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">RFC Corporativo</label>
-                <input type="text" required placeholder="ABC123456789" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Nombre del Contacto (RH / Compras / Dirección)</label>
-                <input type="text" required placeholder="Nombre completo" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Correo Empresarial</label>
-                <input type="email" required placeholder="contacto@suempresa.com" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Teléfono Directo / Celular</label>
-                <input type="tel" required placeholder="55 1234 5678" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Número Aprox. de Empleados / Asegurados</label>
-                <select class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                  <option>10 a 50 empleados</option>
-                  <option>51 a 200 empleados</option>
-                  <option>201 a 500 empleados</option>
-                  <option>Más de 500 empleados</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Ramo de Interés Principal</label>
-              <select id="cot-ramo" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-                <option>Gastos Médicos Mayores Colectivo (GMM)</option>
-                <option>Vida Grupo y Accidentes Personales</option>
-                <option>Seguro Múltiple Empresarial (Daños e Inmueble)</option>
-                <option>Flotilla de Vehículos / Equipo Pesado</option>
-                <option>Responsabilidad Civil & D&O</option>
-                <option>Fianzas Administrativas y Garantías</option>
-                <option>Paquete Integral (GMM + Vida + Daños)</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Comentarios o Requerimientos Específicos</label>
-              <textarea rows="3" placeholder="Detalle si actualmente cuenta con póliza, fecha de renovación o suma asegurada requerida..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none"></textarea>
-            </div>
-
-            <button type="submit" class="w-full bg-janem-green text-janem-darkNavy font-black py-3.5 rounded-xl text-base hover:bg-janem-greenDark transition-colors shadow-lg uppercase tracking-wider">
-              Solicitar Cotización sin Compromiso
+        <!-- Interactive Access Form -->
+        <div class="bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200 shadow-xl shadow-slate-200/50 glow-box max-w-md mx-auto lg:mx-0">
+          <form id="notifyForm" class="flex flex-col sm:flex-row gap-2" onsubmit="handleSubscribe(event)">
+            <input 
+              type="email" 
+              required
+              placeholder="tu.correo@empresa.com" 
+              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-janem-green focus:bg-white transition-all"
+            >
+            <button 
+              type="submit" 
+              class="px-6 py-3 rounded-xl bg-janem-navy hover:bg-slate-900 text-white font-bold text-sm whitespace-nowrap transition-all shadow-md flex items-center justify-center gap-2 group"
+            >
+              <span>Acceso Anticipado</span>
+              <i class="fa-solid fa-arrow-right text-xs text-janem-green group-hover:translate-x-1 transition-transform"></i>
             </button>
-            <p class="text-[10px] text-center text-slate-400">Sus datos personales están protegidos por la Ley Federal de Protección de Datos Personales en Posesión de Particulares.</p>
           </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contacto" class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-        
-        <!-- Col 1: Logo & About -->
-        <div class="lg:col-span-2 space-y-4">
-          <!-- Logo in Footer -->
-          <div class="bg-white/95 p-3 rounded-lg inline-block">
-            <svg class="h-10 w-auto" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="janemArcGradFooter" x1="10" y1="10" x2="110" y2="40" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#00E676" />
-                  <stop offset="100%" stop-color="#002B49" />
-                </linearGradient>
-              </defs>
-              <path d="M 12,38 A 38,38 0 0,1 112,38" fill="none" stroke="url(#janemArcGradFooter)" stroke-width="15" stroke-linecap="round"/>
-              <path d="M 33,30 L 59,30 L 59,62 C 59,74 50,83 36,83 C 22,83 13,74 13,63 L 30,63 C 30,67 32,70 36,70 C 40,70 42,67 42,62 L 42,44 L 33,44 Z" fill="#002B49" />
-              <text x="75" y="80" class="logo-text-main" font-size="58">ANEM</text>
-              <text x="188" y="93" class="logo-text-sub" font-size="12">EMPRESARIAL</text>
-            </svg>
-          </div>
-          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
-            Janem Empresarial Agente de Seguros y Fianzas. Firma especializada en la consultoría, estructuración y administración de programas de seguros corporativos y beneficios para empleados en México.
-          </p>
-          <div class="flex space-x-3 pt-2">
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-janem-navy text-slate-300 hover:text-janem-green flex items-center justify-center transition-colors">
-              <i class="fa-brands fa-linkedin-in text-xs">
-                <span class="sr-only">LinkedIn</span>
-              </i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-janem-navy text-slate-300 hover:text-janem-green flex items-center justify-center transition-colors">
-              <i class="fa-brands fa-facebook-f text-xs">
-                <span class="sr-only">Facebook</span>
-              </i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-janem-navy text-slate-300 hover:text-janem-green flex items-center justify-center transition-colors">
-              <i class="fa-brands fa-whatsapp text-xs">
-                <span class="sr-only">WhatsApp</span>
-              </i>
-            </a>
+          <div id="formFeedback" class="hidden text-xs text-emerald-700 font-semibold mt-2 px-2 text-left">
+            <i class="fa-solid fa-circle-check mr-1"></i> ¡Solicitud recibida! Te notificaremos al habilitar tu acceso corporativo.
           </div>
         </div>
 
-        <!-- Col 2: Soluciones -->
-        <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-janem-green pl-2">Soluciones</h4>
-          <ul class="space-y-2.5 text-xs text-slate-400">
-            <li><a href="#soluciones" class="hover:text-white transition-colors">Gastos Médicos Colectivo</a></li>
-            <li><a href="#soluciones" class="hover:text-white transition-colors">Vida Grupo & Accidentes</a></li>
-            <li><a href="#soluciones" class="hover:text-white transition-colors">Seguro Múltiple Empresarial</a></li>
-            <li><a href="#soluciones" class="hover:text-white transition-colors">Flotillas Vehiculares</a></li>
-            <li><a href="#soluciones" class="hover:text-white transition-colors">Responsabilidad Civil / D&O</a></li>
-            <li><a href="#soluciones" class="hover:text-white transition-colors">Fianzas Administrativas</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Portal & RH -->
-        <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-janem-green pl-2">Atención & Portal</h4>
-          <ul class="space-y-2.5 text-xs text-slate-400">
-            <li><a href="#tramites" onclick="switchTab('reembolsos')" class="hover:text-white transition-colors">Solicitud de Reembolso</a></li>
-            <li><a href="#tramites" onclick="switchTab('programacion')" class="hover:text-white transition-colors">Programación Quirúrgica</a></li>
-            <li><a href="#tramites" onclick="switchTab('rh-movimientos')" class="hover:text-white transition-colors">Portal de Altas y Bajas RH</a></li>
-            <li><a href="#formatos" class="hover:text-white transition-colors">Descarga de Formatos PDF</a></li>
-            <li><button onclick="openModal()" class="hover:text-white transition-colors text-left">Acceso Intranet Corporativa</button></li>
-          </ul>
-        </div>
-
-        <!-- Col 4: Contacto Oficial -->
-        <div>
-          <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-janem-green pl-2">Oficina Central</h4>
-          <ul class="space-y-3 text-xs text-slate-400">
-            <li class="flex items-start gap-2">
-              <i class="fa-solid fa-location-dot text-janem-green mt-0.5"></i>
-              <span>Patricio Sanz 1609, Piso 4, Benito Juarez, 03110 Ciudad de México, CDMX</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="fa-solid fa-phone text-janem-green"></i>
-              <span>55 5280 4000 | 800 526 3600</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="fa-solid fa-envelope text-janem-green"></i>
-              <span>hola@janemempresarial.com.mx</span>
-            </li>
-          </ul>
+        <!-- Contact Quick Actions -->
+        <div class="pt-2 flex flex-wrap justify-center lg:justify-start items-center gap-4 text-xs font-semibold text-slate-600">
+          <span class="text-slate-400">¿Requieres atención inmediata?</span>
+          <a href="https://wa.me/" target="_blank" class="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 transition-colors">
+            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Corporativo
+          </a>
+          <span class="text-slate-300">•</span>
+          <a href="mailto:contacto@janemempresarial.com.mx" class="inline-flex items-center gap-1.5 text-janem-navy hover:underline">
+            <i class="fa-regular fa-envelope text-sm"></i> Atender un Siniestro
+          </a>
         </div>
 
       </div>
 
-      <!-- Legal disclaimer & regulatory info -->
-      <div class="pt-8 border-t border-slate-800 text-center md:flex md:justify-between items-center text-[11px] text-slate-500">
-        <p>© 2026 Janem Empresarial Agente de Seguros y Fianzas S.A. de C.V. Todos los derechos reservados.</p>
-        <div class="flex justify-center space-x-6 mt-4 md:mt-0">
-          <a href="#" class="hover:underline">Aviso de Privacidad</a>
-          <a href="#" class="hover:underline">Términos y Condiciones</a>
-          <a href="#" class="hover:underline">Cédula CNSF C294021</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- MODAL DE ACCESO A INTRANET -->
-  <div id="loginModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg">
-        <i class="fa-solid fa-xmark">
-          <span class="sr-only">Cerrar</span>
-        </i>
-      </button>
-
-      <div class="text-center mb-6">
-        <div class="inline-block p-2 bg-slate-50 rounded-lg mb-2">
-          <svg class="h-8 w-auto" viewBox="0 0 320 100" fill="none">
-            <path d="M 12,38 A 38,38 0 0,1 112,38" fill="none" stroke="#00C853" stroke-width="15" stroke-linecap="round"/>
-            <path d="M 33,30 L 59,30 L 59,62 C 59,74 50,83 36,83 C 22,83 13,74 13,63 L 30,63 C 30,67 32,70 36,70 C 40,70 42,67 42,62 L 42,44 L 33,44 Z" fill="#002B49" />
-            <text x="75" y="80" class="logo-text-main" font-size="58">ANEM</text>
-            <text x="188" y="93" class="logo-text-sub" font-size="12">EMPRESARIAL</text>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-janem-navy">Intranet de Clientes Corporativos</h3>
-        <p class="text-xs text-slate-500 mt-1">Ingrese sus credenciales de administrador de Recursos Humanos o Administrador de Riesgos.</p>
-      </div>
-
-      <form onsubmit="handleLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Usuario / ID Empresa</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-              <i class="fa-solid fa-building text-xs"></i>
-            </span>
-            <input type="text" required placeholder="empresa.admin" class="w-full pl-9 pr-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
+      <!-- Right Column: Live Terminal Simulation -->
+      <div class="lg:col-span-5">
+        <div class="bg-janem-navyDeep text-slate-200 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden font-mono text-xs">
+          <!-- Terminal Header -->
+          <div class="bg-janem-navy px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+            </div>
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Janem Cloud Sync</span>
           </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Contraseña</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-              <i class="fa-solid fa-key text-xs"></i>
-            </span>
-            <input type="password" required placeholder="••••••••••••" class="w-full pl-9 pr-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-janem-navy focus:outline-none">
-          </div>
-        </div>
-
-        <div class="flex justify-between items-center text-xs">
-          <label class="flex items-center gap-1.5 text-slate-600">
-            <input type="checkbox" class="rounded border-slate-300 text-janem-navy focus:ring-janem-navy"> Recordar sesión
-          </label>
-          <a href="#" class="text-janem-navy font-bold hover:underline">¿Olvidó su clave?</a>
-        </div>
-
-        <button type="submit" class="w-full bg-janem-navy text-white font-bold py-3 rounded-lg text-sm hover:bg-janem-blueHover transition-colors flex items-center justify-center gap-2">
-          <i class="fa-solid fa-lock"></i> Entrar a Portal Seguro
-        </button>
-      </form>
-
-      <div class="mt-6 pt-4 border-t border-slate-100 text-center">
-        <p class="text-xs text-slate-500">¿Aún no cuenta con acceso corporativo a la intranet?</p>
-        <a href="#contacto" onclick="closeModal()" class="text-xs font-bold text-janem-navy hover:underline">Solicitar alta de administrador de RH</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- NOTIFICATION TOAST -->
-  <div id="toast" class="fixed bottom-5 right-5 bg-janem-navy text-white px-6 py-4 rounded-xl shadow-2xl z-50 hidden transition-all flex items-center gap-3 border border-janem-green">
-    <div class="w-8 h-8 rounded-full bg-janem-green text-janem-darkNavy flex items-center justify-center font-bold">
-      <i class="fa-solid fa-check"></i>
-    </div>
-    <div>
-      <h5 id="toast-title" class="font-bold text-sm">Solicitud Registrada</h5>
-      <p id="toast-msg" class="text-xs text-slate-300">Nos pondremos en contacto a la brevedad.</p>
-    </div>
-  </div>
-
-  <!-- JAVASCRIPT LOGIC -->
-  <script>
-    // Tab Switcher for Tramites Portal
-    function switchTab(tabId) {
-      // Hide all contents
-      const contents = document.querySelectorAll('.tab-content');
-      contents.forEach(content => content.classList.add('hidden'));
-
-      // Deactivate all buttons
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => {
-        btn.classList.remove('bg-janem-navy', 'text-white', 'active');
-        btn.classList.add('bg-slate-100', 'text-slate-700');
-      });
-
-      // Show selected content
-      const selectedContent = document.getElementById('tab-' + tabId);
-      if (selectedContent) {
-        selectedContent.classList.remove('hidden');
-      }
-
-      // Activate selected button
-      const selectedBtn = document.getElementById('tab-' + tabId + '-btn');
-      if (selectedBtn) {
-        selectedBtn.classList.remove('bg-slate-100', 'text-slate-700');
-        selectedBtn.classList.add('bg-janem-navy', 'text-white', 'active');
-      }
-    }
-
-    // Product Selection to prefill Cotizador
-    function selectProduct(productName) {
-      const ramoSelect = document.getElementById('cot-ramo');
-      if (ramoSelect) {
-        for (let i = 0; i < ramoSelect.options.length; i++) {
-          if (ramoSelect.options[i].text.includes(productName) || ramoSelect.options[i].value.includes(productName)) {
-            ramoSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-      document.getElementById('cotizador').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Search/Filter Doctors in Network
-    function filterDoctors() {
-      const input = document.getElementById('search-doctor').value.toLowerCase();
-      const cards = document.querySelectorAll('.doctor-card');
-
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if (text.includes(input)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-
-    // Modal Control
-    function openModal() {
-      document.getElementById('loginModal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('loginModal').classList.add('hidden');
-    }
-
-    // Generic Form Handler with Toast Notification
-    function handleFormSubmit(event, typeName) {
-      event.preventDefault();
-      showToast('¡' + typeName + ' Enviado!', 'Hemos recibido su información correctamente. Un asesor revisará su solicitud.');
-      event.target.reset();
-    }
-
-    // Login Handler Simulation
-    function handleLogin(event) {
-      event.preventDefault();
-      closeModal();
-      showToast('Bienvenido al Portal de RH', 'Acceso autorizado como Administrador Corporativo.');
-    }
-
-    // Simulated File Download
-    function downloadFile(fileName) {
-      showToast('Descarga Iniciada', 'Descargando ' + fileName);
-    }
-
-    // Toast Notification System
-    function showToast(title, message) {
-      const toast = document.getElementById('toast');
-      document.getElementById('toast-title').innerText = title;
-      document.getElementById('toast-msg').innerText = message;
-
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 4000);
-    }
-
-    // Mobile Menu Toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    });
-  </script>
-</body>
-</html>
+          
+          <!-- Terminal Body -->
+          <div class="p-5 space-y-3 h-64 overflow-y-auto" id="terminalConsole">
+            <p class="text-emerald-400">&gt; Iniciando protocolo de despliegue Janem Empresarial...</p>
+            <p class="text-slate-400">&gt; Conectando con servidor DNS en Cloudflare Edge [OK]</p>
+            <p class="text-slate-400">&gt; Verificando certificados SSL/TLS de alta seguridad [OK]</p>
+            <p class="text-slate-300">&gt; Cargando módulos de Seguros Corporativos:</p>
+            <p class="text-slate-400 ml-4">├─ GMM Colectivo &amp; Reembolsos Digitales</p>
+            <p class="text-slate-400 ml-4">├─ Vida Grupo &amp; Accidentes Personales</p>
+            <p class="text-slate-400 ml-4">├─ Múltiple Empresarial &amp; Responsabilidad Civil</p>
+            <p class="text-slate-400 ml-4">└─ Portal de Trámites &amp; Altas/Bajas de RH</p>
+            <p class="text-emerald
